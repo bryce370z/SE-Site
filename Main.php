@@ -5,12 +5,13 @@
  
  // if session is not set this will redirect to login page
  if( !isset($_SESSION['user']) ) {
-  header("Location: login.php");
-  exit;
+ 	// do nothing
  }
  // select loggedin users detail
+if(isset($_SESSION['user'])) {
  $res=mysql_query("SELECT * FROM Users WHERE idUsers=".$_SESSION['user']);
  $userRow=mysql_fetch_array($res);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,6 +42,7 @@
             <li><a href="http://www.codingcage.com/search/label/jQuery">jQuery</a></li>
             <li><a href="http://www.codingcage.com/search/label/PHP">PHP</a></li>
           </ul>
+<?php if(isset($_SESSION['user'])): ?>
           <ul class="nav navbar-nav navbar-right">
             
             <li class="dropdown">
@@ -51,6 +53,7 @@
               </ul>
             </li>
           </ul>
+<?php endif; ?>
         </div><!--/.nav-collapse -->
       </div>
     </nav> 
