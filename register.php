@@ -27,9 +27,9 @@
   if (empty($name)) {
    $error = true;
    $nameError = "Please enter your full name.";
-  } else if (strlen($name) < 3) {
+  } else if (strlen($name) < 6) {
    $error = true;
-   $nameError = "Name must have atleat 3 characters.";
+   $nameError = "Name must have atleat 6 characters.";
   } else if (!preg_match("/^[a-zA-Z ]+$/",$name)) {
    $error = true;
    $nameError = "Name must contain alphabets and space.";
@@ -41,7 +41,7 @@
    $emailError = "Please enter valid email address.";
   } else {
    // check email exist or not
-   $query = "SELECT Email FROM Users WHERE email='$email'";
+   $query = "SELECT email FROM Users WHERE email ='$email'";
    $result = mysql_query($query);
    $count = mysql_num_rows($result);
    if($count!=0){
@@ -53,9 +53,9 @@
   if (empty($pass)){
    $error = true;
    $passError = "Please enter password.";
-  } else if(strlen($pass) < 6) {
+  } else if(strlen($pass) < 8) {
    $error = true;
-   $passError = "Password must have atleast 6 characters.";
+   $passError = "Password must have atleast 8 characters.";
   }
   
   // password encrypt using SHA256();
@@ -87,9 +87,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Coding Cage - Login & Registration System</title>
-<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css"  />
-<link rel="stylesheet" href="style.css" type="text/css" />
+<title>Register</title>
 </head>
 <body>
 
